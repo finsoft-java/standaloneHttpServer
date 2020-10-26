@@ -34,13 +34,13 @@ public class App {
 			public void handle(HttpExchange t) throws IOException {
 
 				Headers hd = t.getRequestHeaders();
-
+				
 				String body = "";
 				body += "Method: " + t.getRequestMethod() + "\r\n";
 				body += "Body: " + convertStreamToString(t.getRequestBody()) + "\r\n";
 				body += "Headers: \r\n";
 				for (String header : hd.keySet()) {
-					body += header + " : " + hd.get(header) + "\r\n";
+					body += " > " + header + " : " + hd.get(header) + "\r\n";
 				}
 
 				setBody(t, 200, body);
